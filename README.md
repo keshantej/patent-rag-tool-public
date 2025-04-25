@@ -36,6 +36,7 @@ Some features—like advanced routing logic, prompt assembly, and document prepr
 - **Title 37 CFR**: USPTO’s rules of practice
 - **Claim Rules & Fees**: Dedicated section for claims, dependencies, and filing costs
 
+> The full version includes this corpus as well as a modular scraping tool in the case of updates. 
 ---
 
 ## 🧠 Embedding Logic
