@@ -92,7 +92,7 @@ This public codebase is made available for **academic and evaluative purposes** 
 
 To request full access, discuss collaborations, or licensing:
 
-📧 rtejira1@jh.alumni.edu
+📧 rtejira1@alumni.jh.edu
 
 ---
 
