@@ -104,8 +104,8 @@ OPENAI_API_KEY=your_key python public_run_pipeline.py
 
 ## 🛡 License & Use
 
-**© 2025 Rudra Tejiram. All rights reserved.**  
-This codebase is shared for academic and demo purposes. Please contact for collaboration or licensing.
+**Certain components are proprietary and not included in this repo. Public content is licensed under the MIT License. For access to the full system or licensing inquiries, please contact me.**  
+This codebase is shared for academic and demo purposes.
 
 ---
 
