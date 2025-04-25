@@ -39,6 +39,18 @@ Covers all major areas of U.S. patent law:
 - **Title 35 U.S.C.**: Statutory foundation for patent law (101, 102, 103, 112, etc.)
 - **Title 37 CFR**: USPTO’s rules of practice and procedure
 - **Claim Interpretation Rules**: Internal section dedicated to counting, dependencies, and fees
+  
+### Embedding System
+
+This repo includes a stripped-down public version of the custom `OpenAIDocumentEmbedder` and `OpenAITextEmbedder` components.
+
+- Built with Haystack component decorators
+- Includes metadata-aware embeddings (title, section ID, etc.)
+- Uses local hash-based caching to reduce redundant API calls
+- Embedding dimensions and batching automatically adjust to model selection
+
+> The full version contains advanced routing logic and reranker integration, which are not included in this public layer.
+
 
 ## ⚙️ Configuration
 
