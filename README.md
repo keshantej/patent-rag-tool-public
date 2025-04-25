@@ -1,88 +1,90 @@
 # Patent RAG Tool (Public Demo Layer)
 
-A Retrieval-Augmented Generation (RAG) platform purpose-built for U.S. patent law research and analysis.  
-This system leverages large language models to provide contextualized, citation-linked answers using:
+A legal research tool for U.S. patent law, built with Retrieval-Augmented Generation (RAG) architecture.  
+This demo showcases a simplified version of a system designed to deliver grounded, citation-rich answers using:
 
 - The Manual of Patent Examining Procedure (MPEP)
-- 35 U.S.C. (Patent Statute)
-- 37 CFR (Patent Regulations)
+- Title 35 U.S.C. (Patent Statutes)
+- Title 37 CFR (Patent Regulations)
 
-## 🔐 Full Implementation
+---
 
-This public demo highlights the core architecture, components, and legal-tech design of the system.  
-Proprietary routing logic, prompt assembly strategies, and document preprocessing pipelines are **retained in a private version** and available for **review upon request**.
+## 🔍 About This Project
 
-## 🚀 Key Features (System Architecture)
+This public repo includes the core architecture and components behind the tool.  
+Some features—like advanced routing logic, prompt assembly, and document preprocessing—are part of a private version and can be shared for academic or collaborative review upon request.
 
-The full system is designed to support:
+---
 
-- **Query Classification**: Identifies section lookups, comparisons, fact patterns, or claim-specific queries
-- **Smart Retrieval Routing**: Dynamically switches between semantic and direct section retrieval
-- **Statute-Aware Expansion**: If a query references 102 or 112, all relevant subsections and interpretations are added
-- **Citation-Aware Prompt Building**: Contextualizes LLM output with inline [MPEP §], [CFR §], and [35 U.S.C. §] tags
-- **Hyperlinking of Citations**: Automatically links citations in the output to authoritative sources
-- **Legal Query Rewriting**: Refines user queries using LLMs to better match legal search indices
-- **Efficient Embedding Layer**: Switchable between OpenAI or SentenceTransformers with optional caching
-- **FastAPI Interface**: Lightweight API for legal question answering
-- **Chunked Legal Vector Store**: In-memory vector database with metadata-rich sections
-- **Embedding Layer**: Custom OpenAI embedder with metadata hashing and persistent cache management
-- **Web UI**: Tailwind-based interface with Markdown rendering, citation support, and chat memory
+## ⚙️ Key Features (Public Version)
 
+- **Query Classification**: Distinguishes statute lookups, fact patterns, and claim-specific questions
+- **Section-Aware Retrieval**: Switches between semantic and direct retrieval based on query type
+- **Citation Tagging**: Adds inline references to [MPEP §], [CFR §], and [35 U.S.C. §]
+- **Hyperlinked Citations**: Outputs include direct links to relevant legal sources
+- **Basic Query Rewriting**: Uses LLMs to refine legal questions for better retrieval
+- **Embedding Layer**: Supports OpenAI and SentenceTransformers with local caching
+- **FastAPI Interface**: Simple legal QA endpoint
+- **Web UI**: Tailwind-based frontend with Markdown rendering and citation memory
 
-Some of these features are **stubbed or scaffolded** in the public version. Full functionality is available in the private edition.
+---
 
-## 📚 Legal Knowledge Base
+## 📚 Legal Corpus
 
-Covers all major areas of U.S. patent law:
+- **MPEP**: Chapters 100–2900 (Eligibility, Appeals, Rejections, etc.)
+- **Title 35**: Patent statutes including §§101, 102, 103, 112
+- **Title 37 CFR**: USPTO’s rules of practice
+- **Claim Rules & Fees**: Dedicated section for claims, dependencies, and filing costs
 
-- **MPEP**: Chapters 100–2900 (Eligibility, Rejections, Appeal, Reissue, etc.)
-- **Title 35 U.S.C.**: Statutory foundation for patent law (101, 102, 103, 112, etc.)
-- **Title 37 CFR**: USPTO’s rules of practice and procedure
-- **Claim Interpretation Rules**: Internal section dedicated to counting, dependencies, and fees
-  
-### Embedding System
+---
 
-This repo includes a stripped-down public version of the custom `OpenAIDocumentEmbedder` and `OpenAITextEmbedder` components.
+## 🧠 Embedding Logic
 
-- Built with Haystack component decorators
-- Includes metadata-aware embeddings (title, section ID, etc.)
-- Uses local hash-based caching to reduce redundant API calls
-- Embedding dimensions and batching automatically adjust to model selection
+Includes a public version of the custom `OpenAIDocumentEmbedder`:
 
-> The full version contains advanced routing logic and reranker integration, which are not included in this public layer.
+- Built with Haystack decorators
+- Adds metadata like section titles and IDs
+- Local hash-based caching to avoid duplicate API calls
 
+> The full version includes reranker logic and additional retrieval layers.
 
-## ⚙️ Configuration
+---
 
-Configurable via environment variables (`.env` or shell):
+## 🛠 Configuration
+
+Set via `.env` or environment variables:
 
 | Variable | Description | Default |
 |----------|-------------|---------|
-| MPEP_FOLDER_PATH | Path to JSON chunk directory | `datapool/` |
-| USE_OPENAI_EMBEDDINGS | Toggle OpenAI vs. local embeddings | `true` |
+| MPEP_FOLDER_PATH | Path to chunked data | `datapool/` |
+| USE_OPENAI_EMBEDDINGS | Toggle OpenAI embeddings | `true` |
 | EMBEDDING_MODEL | SentenceTransformers model | `BAAI/bge-base-en-v1.5` |
-| OPENAI_EMBEDDING_MODEL | Embedding model name | `text-embedding-3-small` |
-| ANSWER_GENERATION_MODEL | LLM for answering | `gpt-4.1` |
-| QUERY_REWRITING_MODEL | LLM for query rewriting | `o3` |
-| EMBEDDING_CACHE_DIR | Local cache path | `.embedding_cache/` |
-| RETRIEVER_TOP_K | Number of top documents | `10` |
+| OPENAI_EMBEDDING_MODEL | OpenAI embed model | `text-embedding-3-small` |
+| ANSWER_GENERATION_MODEL | Model for answers | `gpt-4.1` |
+| QUERY_REWRITING_MODEL | Rewriter model | `o3` |
+| EMBEDDING_CACHE_DIR | Cache folder | `.embedding_cache/` |
+| RETRIEVER_TOP_K | Top documents retrieved | `10` |
 | CHUNKS_PER_DOC | Chunk merge size | `3` |
 
-## 🧪 API Endpoint
+---
 
-- `POST /query`
-- JSON payload:  
+## ▶️ API Usage
+
+- **POST /query**
+- Sample payload:
   ```json
   { "query": "difference between 102 and 103 rejections" }
   ```
-- Response includes:  
-  - Final answer with legal citations  
-  - Source sections (with URLs, titles, and section IDs)
+- Response includes:
+  - Answer with inline citations
+  - Sources with URLs and section titles
 
-## 🛠️ Installation
+---
+
+## 🚀 Getting Started
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/patent-rag-tool.git
+git clone https://github.com/keshantej/patent-rag-tool-public.git
 cd patent-rag-tool
 
 pip install -r requirements.txt
@@ -90,25 +92,27 @@ pip install -r requirements.txt
 pip install haystack-ai openai sentence-transformers fastapi uvicorn nltk bs4
 ```
 
-## ▶️ Running the Server
+### Run the Server
 
 ```bash
 # With environment variables
 OPENAI_API_KEY=your_key python public_run_pipeline.py
 ```
 
-## 🛡 License
+---
+
+## 🛡 License & Use
 
 **© 2025 Rudra Tejiram. All rights reserved.**  
-This public codebase is made available for **academic and evaluative purposes** only.  
-**Reuse, modification, or redistribution is prohibited** without explicit written permission.
+This codebase is shared for academic and demo purposes. Please contact for collaboration or licensing.
 
-## 🤝 Contact & Licensing
+---
 
-To request full access, discuss collaborations, or licensing:
+## 📬 Contact
 
+For full access, licensing, or academic collaboration:  
 📧 rtejira1@alumni.jh.edu
 
 ---
 
-*This project reflects an advanced legal AI system built for explainability, citation-grounding, and precision in U.S. patent law.*
+*This is an experimental legal tech tool built for transparency, explainability, and structured citation in patent law.*
