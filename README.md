@@ -25,6 +25,9 @@ The full system is designed to support:
 - **Efficient Embedding Layer**: Switchable between OpenAI or SentenceTransformers with optional caching
 - **FastAPI Interface**: Lightweight API for legal question answering
 - **Chunked Legal Vector Store**: In-memory vector database with metadata-rich sections
+- **Embedding Layer **: Custom OpenAI embedder with metadata hashing and persistent cache management
+- **Web UI**: Tailwind-based interface with Markdown rendering, citation support, and chat memory
+
 
 Some of these features are **stubbed or scaffolded** in the public version. Full functionality is available in the private edition.
 
