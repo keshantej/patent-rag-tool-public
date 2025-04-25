@@ -12,7 +12,7 @@ This demo showcases a simplified version of a system designed to deliver grounde
 ## 🔍 About This Project
 
 This public repo includes the core architecture and components behind the tool.  
-Some features—like advanced routing logic, prompt assembly, and document preprocessing—are part of a private version and can be shared for academic or collaborative review upon request.
+Some components—such as the full routing engine, dynamic prompt construction, and document preprocessing pipeline—are part of a more complete and private version of this tool. These features include statute-aware expansion, custom reranking logic, and citation-preserving chunking. While omitted from this public demo, they can be made available for academic evaluation, technical review, or collaborative discussions upon request.
 
 ---
 
